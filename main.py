@@ -21,15 +21,29 @@ def hasil():
     print('')
     print('')
     for i in range(nilai):
-      print(nama[i])
+      print(i+1,nama[i])
       print('============')
     print('')
-    umh()
   elif nilai == 0:
     print('')
     print('===== data kosong =====')
     print('')
+  print('1 : edit data')
+  print('2 : hapus data')
+  print('99: kembali ke rumah')
+  masukan = input('pilihan mu? : ')
+  if int(masukan) == 1:
+    edit()
+  elif int(masukan) == 2:
+    hapus()
+  elif int(masukan) == 99:
+    print('')
     umh()
+  else:
+    print('')
+    print('== salah input!! ==')
+    print('')
+    hasil()
     
 # fungsi home
 def umh():
@@ -51,12 +65,33 @@ def umh():
     print('')
     print('==== yang anda masukkan salah!! ====')
     print('')
-    salah()
+    umh()
 
-# jika ada kesalahan input user maka akan return ke fngsi umh
-def salah():
-  umh()
+# fungsi remove
+def hapus():
+  y = len(nama)
+  if y == 0:
+    hasil()
+  else:
+    print('')
+    delete = input('No data yang ingin di hapus : ')
+    x = int(delete) - 1
+    print('===== '+nama[x]+' telah dihapus dari list =====')
+    del nama[x]
+    hasil()
 
-
-
+# fungsi edit list
+def edit():
+  y = len(nama)
+  if y == 0:
+    hasil()
+  else:  
+    print('')
+    nomer = input('No data yang ingin di edit = ')
+    change = input('masukkan perubahan = ')
+    x = int(nomer) - 1
+    print('=== '+nama[x]+' berhasil di rubah menjadi '+change+' ===')
+    nama[x] = change
+    hasil()
+  
 umh()
